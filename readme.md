@@ -1,12 +1,18 @@
 
 ##  Installation
 
+```bash
 npm install -g
+```
+```bash
 npm install express
+```
 
 ### Initialize the project
 
+```bash
 npm init
+```
 
 ##  Server Code
 
