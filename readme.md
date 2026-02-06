@@ -6,6 +6,7 @@ npm install -g
 ```
 ```bash
 npm install express
+npm install mongoose
 ```
 
 ### Initialize the project
@@ -44,7 +45,7 @@ app.listen(port, () => {
 ```
 ### Start the server locally:
 ```bash
-node index.js
+node server.js
 ```
 ```bash
 npm install --save-dev nodemon
@@ -70,7 +71,7 @@ curl http://localhost:8080/users
 
 ```json
 "scripts": {
-  "start": "node index.js",
-  "dev": "nodemon index.js"
+  "start": "node server.js",
+  "dev": "nodemon server.js"
 }
 ```
