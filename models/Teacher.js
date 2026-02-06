@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+import mongoose, { Schema } from "mongoose";
 
 const teacherSchema = new Schema(
   {
@@ -14,7 +13,7 @@ const teacherSchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Teacher = mongoose.model("Teacher", teacherSchema);

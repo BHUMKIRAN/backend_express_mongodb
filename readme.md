@@ -18,30 +18,27 @@ npm init
 ##  Server Code
 
 ```javascript
-const express = require('express')
-const app = express()
-const port = 8080
+import express from "express";
+import connectDB from "./config/db.js";
+import studentRoutes from "./routes/student.js";
+import teacherRoutes from "./routes/teacher.js";
 
-const user = [{
-    id: 1, 
-    name: "kiran"
-},
-{
-    id: 2,
-    name: "bhum"
-}]
+const app = express();
+const port = 8080;
 
-app.get('/', (req, res) => {
-    res.send('Hello world!')
-})
+app.use(express.json());
 
-app.get('/users', (req, res) => {
-    res.send(user)
-})
+// DB Connection
+connectDB();
+
+// Routes
+app.use("/students", studentRoutes);
+app.use("/teachers", teacherRoutes);
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`)
-})
+  console.log(`Server running on port ${port}`);
+});
+
 ```
 ### Start the server locally:
 ```bash
@@ -64,7 +61,8 @@ curl http://localhost:8080/
 ```
 
 ```bash
-curl http://localhost:8080/users
+curl http://localhost:8080/students
+curl http://localhost:8080/teachers
 ```
 
 ##  Development

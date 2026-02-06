@@ -1,31 +1,16 @@
 import express from "express";
-import Teacher from "../models/Teacher.js";
+import { createTeacher, deleteTeacher, editTeacher, readTeacher, readTeachers } from "../controllers/teacher.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  await Teacher.create(req.body);
-  res.send("Teacher added");
-});
+router.post("/", createTeacher );
 
-router.get("/", async (req, res) => {
-  const teachers = await Teacher.find();
-  res.send(teachers);
-});
+router.get("/", readTeachers);
 
-router.get("/:id", async (req, res) => {
-  const teacher = await Teacher.findById(req.params.id);
-  res.send(teacher);
-});
+router.get("/:id", readTeacher);
 
-router.put("/:id", async (req, res) => {
-  await Teacher.findByIdAndUpdate(req.params.id, req.body);
-  res.send("Teacher updated");
-});
+router.put("/:id", editTeacher);
 
-router.delete("/:id", async (req, res) => {
-  await Teacher.findByIdAndDelete(req.params.id);
-  res.send("Teacher deleted");
-});
+router.delete("/:id", deleteTeacher);
 
 export default router;

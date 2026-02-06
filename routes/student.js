@@ -1,36 +1,27 @@
-import express from "express";
-import Student from "../models/Student.js";
+import { Router } from "express";
+import {
+  createStudents,
+  deleteStudentById,
+  editStudentById,
+  readStudentById,
+  readStudents,
+} from "../controllers/student.js";
 
-const router = express.Router();
+const router = Router();
 
 // CREATE
-router.post("/", async (req, res) => {
-  await Student.create(req.body);
-  res.send("Student added successfully");
-});
+router.post("/", createStudents);
 
 // READ ALL
-router.get("/", async (req, res) => {
-  const students = await Student.find();
-  res.send(students);
-});
+router.get("/", readStudents);
 
 // READ ONE
-router.get("/:id", async (req, res) => {
-  const student = await Student.findById(req.params.id);
-  res.send(student);
-});
+router.get("/:id", readStudentById);
 
 // UPDATE
-router.put("/:id", async (req, res) => {
-  await Student.findByIdAndUpdate(req.params.id, req.body);
-  res.send("Student updated");
-});
+router.put("/:id", editStudentById);
 
 // DELETE
-router.delete("/:id", async (req, res) => {
-  await Student.findByIdAndDelete(req.params.id);
-  res.send("Student deleted");
-});
+router.delete("/:id", deleteStudentById);
 
 export default router;
