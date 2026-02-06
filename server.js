@@ -1,7 +1,7 @@
 import express from "express";
 import connectDB from "./config/db.js";
-import studentRoutes from "./routes/student.routes.js";
-import teacherRoutes from "./routes/teacher.routes.js";
+import studentRoutes from "./routes/student.js";
+import teacherRoutes from "./routes/teacher.js";
 
 const app = express();
 const port = 8080;
